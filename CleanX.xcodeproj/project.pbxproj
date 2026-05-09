@@ -250,6 +250,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PBBV5BVMZD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CleanX Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CleanX Extension";
@@ -282,6 +283,7 @@
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PBBV5BVMZD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "CleanX Extension/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "CleanX Extension";
@@ -316,6 +318,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PBBV5BVMZD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanX/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CleanX;
@@ -355,6 +358,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = PBBV5BVMZD;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanX/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = CleanX;
