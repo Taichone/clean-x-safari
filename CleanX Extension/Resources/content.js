@@ -1,6 +1,19 @@
 (() => {
     const TAB_LIST_SELECTOR = '[role="tablist"]';
     const TAB_SELECTOR = '[role="tab"], a[role="tab"]';
+    const POST_SELECTOR = 'article[data-testid="tweet"], article[role="article"]';
+    const AD_MARKER_SELECTOR = [
+        '[data-testid="placementTracking"]',
+        '[aria-label="Ad"]',
+        '[aria-label="広告"]',
+        '[aria-label="Promoted"]',
+        '[aria-label="プロモーション"]',
+        '[title="Ad"]',
+        '[title="広告"]',
+        '[title="Promoted"]',
+        '[title="プロモーション"]',
+    ].join(",");
+    const AD_LABELS = new Set(["ad", "advertisement", "promoted", "広告", "プロモーション"]);
     const CHECK_INTERVAL_MS = 700;
 
     function isForYouTab(tab) {
@@ -58,9 +71,38 @@
         });
     }
 
-    const observer = new MutationObserver(hideForYouTabs);
+    function hasExactAdLabel(element) {
+        const label = (element.innerText || element.textContent || "").trim().toLowerCase().replace(/\s+/g, " ");
+        return AD_LABELS.has(label);
+    }
+
+    function isAdPost(post) {
+        if (post.querySelector(AD_MARKER_SELECTOR)) {
+            return true;
+        }
+
+        const labelCandidates = post.querySelectorAll("span, div[dir='ltr'], div[aria-label], a[aria-label]");
+        return Array.from(labelCandidates).some((element) => hasExactAdLabel(element));
+    }
+
+    function hideAdPosts() {
+        const posts = document.querySelectorAll(POST_SELECTOR);
+
+        posts.forEach((post) => {
+            if (isAdPost(post)) {
+                hideElement(post);
+            }
+        });
+    }
+
+    function cleanPage() {
+        hideForYouTabs();
+        hideAdPosts();
+    }
+
+    const observer = new MutationObserver(cleanPage);
     observer.observe(document.documentElement, { childList: true, subtree: true });
 
-    hideForYouTabs();
-    setInterval(hideForYouTabs, CHECK_INTERVAL_MS);
+    cleanPage();
+    setInterval(cleanPage, CHECK_INTERVAL_MS);
 })();
